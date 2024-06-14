@@ -45,8 +45,9 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
+	public String getDataNascimento() {
+		DateTimeFormatter padrao_data = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return dataNascimento.format(padrao_data);
 	}
 
 	public void setDataNascimento(LocalDate dataNascimento) {
