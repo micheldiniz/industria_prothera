@@ -1,6 +1,7 @@
 package io.gupy.prothera.teste.modelo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Pessoa {
@@ -9,11 +10,16 @@ public class Pessoa {
 	private LocalDate dataNascimento;
 	
 	public Pessoa(String nome, LocalDate dataNascimento) {
-		super();
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 	}
 	
+	public Pessoa(String nome, String dataNascimento) {		
+		this.nome = nome;
+		DateTimeFormatter padrao_data = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		this.dataNascimento = LocalDate.parse(dataNascimento, padrao_data);
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(dataNascimento, nome);
@@ -46,5 +52,6 @@ public class Pessoa {
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-			
+
+	
 }
