@@ -13,6 +13,12 @@ public class Funcionario extends Pessoa{
 		super(nome, dataNascimento);
 	}
 	
+	public Funcionario(String nome, String dataNascimento, double salario, String funcao) {
+		super(nome, dataNascimento);
+		this.salario = new BigDecimal(salario);
+		this.funcao = funcao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -41,5 +47,9 @@ public class Funcionario extends Pessoa{
 		this.funcao = funcao;
 	}
 
+
+
+
+	
 	
 }
