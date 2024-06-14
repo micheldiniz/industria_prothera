@@ -1,6 +1,9 @@
 package io.gupy.prothera.teste.modelo;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -52,6 +55,11 @@ public class Pessoa {
 
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	
+	public int getIdade(){		
+		return Period.between(dataNascimento, LocalDate.now()).getYears();
+		
 	}
 
 	
