@@ -13,7 +13,7 @@ public class Funcionario extends Pessoa{
 		super(nome, dataNascimento);
 	}
 	
-	public Funcionario(String nome, String dataNascimento, double salario, String funcao) {
+	public Funcionario(String nome, String dataNascimento, String salario, String funcao) {
 		super(nome, dataNascimento);
 		this.salario = new BigDecimal(salario);
 		this.funcao = funcao;
@@ -47,9 +47,14 @@ public class Funcionario extends Pessoa{
 		this.funcao = funcao;
 	}
 		
-	public BigDecimal getSalario() {
-		
-		return salario;
+	public String getSalario() {		
+	  String salario = this.salario.toString();
+	  String[] valores = salario.split("\\.");
+	  String subs = valores[0]; 
+
+   	  subs = subs.replaceAll("(\\d+)(\\d{3})$", "$1.$2");
+	  	  
+	  return subs+","+valores[1];
 	}
 
 	public void setSalario(BigDecimal salario) {		
@@ -58,7 +63,7 @@ public class Funcionario extends Pessoa{
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + this.getNome() + ", funcao=" + funcao + ", salario=" + salario + ", data nascimento=" + this.getDataNascimento() + "]";
+		return "Funcionario [nome=" + this.getNome() + ", funcao=" + funcao + ", salario=" + this.getSalario() + ", data nascimento=" + this.getDataNascimento() + "]";
 	}
 
 
