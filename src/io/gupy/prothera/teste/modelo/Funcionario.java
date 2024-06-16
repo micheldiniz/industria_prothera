@@ -47,8 +47,13 @@ public class Funcionario extends Pessoa{
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
-		
-	public String getSalario() {		
+	
+	public BigDecimal getSalario() {		
+		return new BigDecimal(this.salario.toString());
+	}
+	
+	
+	public String getSalarioFormatado() {		
 	  String salario = this.salario.toString();
 	  String[] valores = salario.split("\\.");
 	  String subs = valores[0]; 
@@ -69,7 +74,7 @@ public class Funcionario extends Pessoa{
 	
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + this.getNome() + ", funcao=" + funcao + ", salario=" + this.getSalario() + ", data nascimento=" + this.getDataNascimento() + "]";
+		return "Funcionario [nome=" + this.getNome() + ", funcao=" + funcao + ", salario=" + this.getSalarioFormatado() + ", data nascimento=" + this.getDataNascimento() + "]";
 	}
 
 
