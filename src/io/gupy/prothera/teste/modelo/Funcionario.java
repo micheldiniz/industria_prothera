@@ -1,6 +1,7 @@
 package io.gupy.prothera.teste.modelo;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -61,6 +62,11 @@ public class Funcionario extends Pessoa{
 		this.salario = salario;
 	}
 
+	public void aumentaSalarioPercentual(BigDecimal aumento) {		
+		BigDecimal valorAumento = this.salario.multiply(aumento);
+		this.salario = this.salario.add(valorAumento);		
+	}
+	
 	@Override
 	public String toString() {
 		return "Funcionario [nome=" + this.getNome() + ", funcao=" + funcao + ", salario=" + this.getSalario() + ", data nascimento=" + this.getDataNascimento() + "]";
