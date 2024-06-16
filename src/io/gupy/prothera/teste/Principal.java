@@ -81,6 +81,14 @@ public class Principal {
 		});
 		System.out.println(aniversariantes);
 		
+		//total de salário dos funcionários
+		BigDecimal totalSalario = funcionarios.stream()
+				.map(Funcionario::getSalario)
+				.reduce(BigDecimal.ZERO, BigDecimal::add);
+		System.out.println(totalSalario);
+		
+
+		
 	}
 
 }
