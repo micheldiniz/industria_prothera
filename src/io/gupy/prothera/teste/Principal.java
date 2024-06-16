@@ -87,7 +87,10 @@ public class Principal {
 				.reduce(BigDecimal.ZERO, BigDecimal::add);
 		System.out.println(totalSalario);
 		
-
+		//salario minimo 
+		funcionarios.forEach(p -> {
+			System.out.println(p.getNome() + " " + p.getSalario().divide(new BigDecimal("1212"), 1, BigDecimal.ROUND_DOWN));
+		});
 		
 	}
 
