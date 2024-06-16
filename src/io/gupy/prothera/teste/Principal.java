@@ -3,8 +3,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import io.gupy.prothera.teste.modelo.Funcionario;
 
@@ -56,7 +58,12 @@ public class Principal {
 			agrupadosPorFuncao.get(p.getFuncao()).add(p);
 		});
 		
+		//imprime agrupados por função
 		System.out.println(agrupadosPorFuncao);
+				
+		//imprime funcionario mais velho nome e idade
+		Funcionario f = funcionarios.stream().max(Comparator.comparing(Funcionario::getIdade)).get();
+		System.out.println(f.getNome() + " " + f.getIdade());
 		
 		
 	}
