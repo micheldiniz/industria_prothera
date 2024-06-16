@@ -1,7 +1,9 @@
 package io.gupy.prothera.teste;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import io.gupy.prothera.teste.modelo.Funcionario;
@@ -25,14 +27,38 @@ public class Principal {
 		List<Funcionario> funcionarios = new ArrayList<Funcionario>(lista);
 		
 		int indexJoao = funcionarios.indexOf(new Funcionario("João", "12/05/1990","2284.83","Operador"));
-				
+		
+		//remove joão
 		if(indexJoao > 0) {
 			funcionarios.remove(indexJoao);
 		}		
 		
+		//imprime os funcinarios sem joão
 		funcionarios.forEach(p -> {
 			System.out.println(p);
 		});
+				
+		//atualiza salários
+		funcionarios.forEach(p -> {
+			p.aumentaSalarioPercentual(new BigDecimal("0.1"));
+		});
+		
+		//hashmap
+		HashMap<String, ArrayList<Funcionario>> agrupadosPorFuncao = new HashMap<String, ArrayList<Funcionario>>();
+		
+		//gera chaves		
+		funcionarios.forEach(p -> {
+			agrupadosPorFuncao.put(p.getFuncao(), new ArrayList<Funcionario>());			
+		});
+		
+		//adiciona elementos
+		funcionarios.forEach(p -> {
+			agrupadosPorFuncao.get(p.getFuncao()).add(p);
+		});
+		
+		System.out.println(agrupadosPorFuncao);
+		
+		
 	}
 
 }
