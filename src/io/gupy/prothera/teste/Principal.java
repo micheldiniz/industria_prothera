@@ -65,6 +65,21 @@ public class Principal {
 		Funcionario f = funcionarios.stream().max(Comparator.comparing(Funcionario::getIdade)).get();
 		System.out.println(f.getNome() + " " + f.getIdade());
 		
+		//imprime aniversariantes em outubro e dezembro
+		List<Funcionario> aniversariantes = new ArrayList<Funcionario>();
+		
+		funcionarios.forEach(p -> {
+			String data = p.getDataNascimento();
+			String[] dataV = data.split("/");
+			BigDecimal mes = new BigDecimal(dataV[1]);
+			if(mes.remainder(new BigDecimal("10")) == BigDecimal.ZERO) {
+				aniversariantes.add(p);
+			}
+			if(mes.remainder(new BigDecimal("12")) == BigDecimal.ZERO) {
+				aniversariantes.add(p);
+			}
+		});
+		System.out.println(aniversariantes);
 		
 	}
 
